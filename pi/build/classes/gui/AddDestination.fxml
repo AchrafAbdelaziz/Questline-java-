@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="772.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.AddDestinationController">
+   <children>
+      <TextField fx:id="iddest" layoutX="113.0" layoutY="57.0" />
+      <TextField fx:id="nomdest" layoutX="113.0" layoutY="118.0" />
+      <Label layoutX="50.0" layoutY="62.0" text="Id" />
+      <Label layoutX="40.0" layoutY="123.0" text="Nom" />
+      <TableView fx:id="desttab" layoutX="248.0" layoutY="298.0" onMouseClicked="#SetValue" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="iddesttab" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nomdesttab" prefWidth="75.0" text="Nom" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajouter" layoutX="585.0" layoutY="103.0" mnemonicParsing="false" onAction="#AjouterDest" text="Ajouter" />
+      <Button fx:id="btnafficher" layoutX="583.0" layoutY="144.0" mnemonicParsing="false" onAction="#AfficherDest" text="Afficher" />
+      <Button fx:id="btnmodifier" layoutX="582.0" layoutY="196.0" mnemonicParsing="false" onAction="#ModifierDest" text="Modifier" />
+      <Button fx:id="btnsuppimer" layoutX="576.0" layoutY="245.0" mnemonicParsing="false" onAction="#SupprimerDest" text="Supprimer" />
+   </children>
+</AnchorPane>
