@@ -14,6 +14,7 @@ import java.sql.SQLException;
  * @author Samar
  */
 public class MyConnection {
+    private static MyConnection instance;
      public String url="jdbc:mysql://localhost:3306/aziz";
     public String login="root";
     public String pwd="";
@@ -30,5 +31,13 @@ public class MyConnection {
         }
         
     }
-    
+    public static MyConnection getInstance(){
+        if(instance==null){
+            instance= new MyConnection();
+        }
+        return instance;
+    }
+    public Connection getConnection(){
+        return cn ;
+    }
 }

@@ -5,14 +5,18 @@
  */
 package entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author AZIZ AKARI
  */
 public class Vol {
- private int id;
- private int prix;
- private int nbplace;
+    private int id;
+    private Date date;
+    private float prix;
+    private int nbplace;
+    String destination_id;
 
     public int getId() {
         return id;
@@ -22,11 +26,19 @@ public class Vol {
         this.id = id;
     }
 
-    public int getPrix() {
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public float getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(float prix) {
         this.prix = prix;
     }
 
@@ -38,20 +50,33 @@ public class Vol {
         this.nbplace = nbplace;
     }
 
-    public Vol(int prix, int nbplace) {
-        this.prix = prix;
-        this.nbplace = nbplace;
+    public String getDestination_id() {
+        return destination_id;
     }
 
-    public Vol(int id, int prix, int nbplace) {
-        this.id = id;
-        this.prix = prix;
-        this.nbplace = nbplace;
+    public void setDestination_id(String destination_id) {
+        this.destination_id = destination_id;
     }
 
     @Override
     public String toString() {
-        return "Vol{" + "id=" + id + ", prix=" + prix + ", nbplace=" + nbplace + '}';
+        return "Vol{" + "id=" + id + ", date=" + date + ", prix=" + prix + ", nbplace=" + nbplace + ", destination_id=" + destination_id + '}';
     }
 
+    public Vol(int id, Date date, float prix, int nbplace, String destination_id) {
+        this.id = id;
+        this.date = date;
+        this.prix = prix;
+        this.nbplace = nbplace;
+        this.destination_id = destination_id;
+    }
+
+    public Vol(Date date, float prix, int nbplace) {
+        this.date = date;
+        this.prix = prix;
+        this.nbplace = nbplace;
+    }
+    
+    
+    
 }

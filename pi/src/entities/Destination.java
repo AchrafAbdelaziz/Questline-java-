@@ -10,8 +10,12 @@ package entities;
  * @author AZIZ AKARI
  */
 public class Destination {
-    public int id;
-    public String nom;
+    private int id;
+    private String nom;
+
+    public Destination() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public int getId() {
         return id;

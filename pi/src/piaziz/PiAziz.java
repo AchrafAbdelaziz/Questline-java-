@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pi;
+package piaziz;
 
 /**
  *
  * @author AZIZ AKARI
  */
-public class Pi {
+public class PiAziz {
 
     /**
      * @param args the command line arguments

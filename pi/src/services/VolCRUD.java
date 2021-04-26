@@ -23,12 +23,13 @@ public class VolCRUD {
     
     public void addVol (Vol v) throws SQLException{
     try{
-        String requete = "INSERT INTO vol (prix,nbplace)"
-                + "VALUES(?,?)" ;
+        String requete = "INSERT INTO vol (prix,nbplace,date)"
+                + "VALUES(?,?,?)" ;
            PreparedStatement pst =
             new MyConnection().cn.prepareStatement(requete);
-    pst.setInt(1,v.getPrix());
-    pst.setInt(2,v.getNbplace());  
+    pst.setFloat(1,v.getPrix());
+    pst.setInt(2,v.getNbplace()); 
+    pst.setDate(3,v.getDate());
     pst.executeUpdate();
     System.out.println("Vol ajoutée!");
 
@@ -50,14 +51,11 @@ public class VolCRUD {
             //Statement st;
             ResultSet rs;
             try {
-                //System.out.println("AHAYYYAA!!!!");
-                //st=conn.createStatement();
-                //System.out.println("AHAYYYAA222!!!!");
+   
                 rs = pst.executeQuery(requete);
 
                 while (rs.next()) {
-                   Vol v = new Vol(rs.getInt("id"), rs.getInt("prix"), rs.getInt("nbplace"));
-               //   Sujet suj = new Sujet(rs.getString("id_suj"));
+                   Vol v = new Vol(rs.getInt("id"),rs.getDate("date"), rs.getFloat("prix"), rs.getInt("nbplace"), rs.getString("destinations_id"));
                     VolList.add(v);
                 }
 

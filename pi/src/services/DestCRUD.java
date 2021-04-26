@@ -6,10 +6,13 @@
 package services;
 
 import entities.Destination;
-import entities.Vol;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -21,14 +24,17 @@ import tools.MyConnection;
  * @author AZIZ AKARI
  */
 public class DestCRUD {
+    Connection cn;
+    public DestCRUD() {
+        cn=MyConnection.getInstance().getConnection();
+    }
      public void addDestination (Destination dest) throws SQLException{
     try{
-        String requete = "INSERT INTO destination (id,nom)"
-                + "VALUES(?,?)" ;
+        String requete = "INSERT INTO destination (nom)"
+                + "VALUES(?)" ;
            PreparedStatement pst =
             new MyConnection().cn.prepareStatement(requete);
-    pst.setInt(1,dest.getId());
-    pst.setString(2,dest.getNom());  
+    pst.setString(1,dest.getNom());  
     pst.executeUpdate();
     System.out.println("Destination ajoutée!");
 
@@ -69,6 +75,28 @@ public class DestCRUD {
         }
 
         return DestinationList;
+    }
+    public List<Destination> DestinationList() {
+        
+        List<Destination> myList = new ArrayList<>();
+        try { // LES var declaré dans le try ne sont vue que dans le try, et inversement pour en dhors du try
+            String requete = "SELECT * from destination"; //MAJUSCULE NON OBLIGATOIRE 
+            
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                  Destination dest = new Destination();
+                dest.setId(rs.getInt(1));
+                dest.setNom(rs.getString("Nom"));
+                
+                myList.add(dest);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return myList;
+
     }
     
 }

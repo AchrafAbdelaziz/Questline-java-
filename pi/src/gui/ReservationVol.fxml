@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="941.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationVolController">
+   <children>
+      <TextField fx:id="nbpesonneres" layoutX="178.0" layoutY="95.0" />
+      <Label layoutX="31.0" layoutY="100.0" text="Nombre personne" />
+      <DatePicker fx:id="dateres" layoutX="169.0" layoutY="155.0" />
+      <Label layoutX="47.0" layoutY="160.0" text="Date reservation" />
+      <TableView fx:id="restab" layoutX="257.0" layoutY="297.0" onMouseClicked="#SetValue" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nbpersonneRestab" prefWidth="75.0" text="Nombre personne" />
+          <TableColumn fx:id="dateRestab" prefWidth="75.0" text="Date reservation" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajouter" layoutX="752.0" layoutY="106.0" mnemonicParsing="false" onAction="#AjouterReservation" text="Ajouter" />
+      <Button fx:id="btnafficher" layoutX="754.0" layoutY="166.0" mnemonicParsing="false" onAction="#AfficherReservation" text="Afficher" />
+      <Button fx:id="btnmodifier" layoutX="752.0" layoutY="228.0" mnemonicParsing="false" onAction="#ModifierReservation" text="Modifier" />
+      <Button fx:id="btnsupprimer" layoutX="752.0" layoutY="282.0" mnemonicParsing="false" onAction="#SupprimerReservation" text="Supprimer" />
+      <Button fx:id="btnexport" layoutX="732.0" layoutY="421.0" mnemonicParsing="false" onAction="#ExportExel" text="Export" />
+   </children>
+</AnchorPane>

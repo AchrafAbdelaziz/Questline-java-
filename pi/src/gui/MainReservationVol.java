@@ -21,18 +21,17 @@ import javafx.stage.Stage;
  *
  * @author AZIZ AKARI
  */
-public class StartPointVol extends Application {
+public class MainReservationVol extends Application {
     
-  
-    @Override
+   @Override
     public void start(Stage primaryStage) {
      
  try{
         Parent root =
-                  FXMLLoader.load(getClass().getResource("AddVol.fxml"));        
+                  FXMLLoader.load(getClass().getResource("ReservationVol.fxml"));        
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Vol!");
+        primaryStage.setTitle("ReservationVol!");
         primaryStage.setScene(scene);
         primaryStage.show();
         
@@ -47,5 +46,6 @@ public class StartPointVol extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
     
 }
