@@ -13,10 +13,19 @@ public class Review {
     private int id;
     private String comment;
     private int rating;
+    private int id_util_id;
 
     public Review() {
         
     }
+
+    public Review(String comment, int rating, int id_util_id) {
+        this.comment = comment;
+        this.rating = rating;
+        this.id_util_id = id_util_id;
+    }
+
+    
 
     public int getId() {
         return id;
@@ -51,6 +60,14 @@ public class Review {
     public Review(String comment, int rating) {
         this.comment = comment;
         this.rating = rating;
+    }
+
+    public int getId_util_id() {
+        return id_util_id;
+    }
+
+    public void setId_util_id(int id_util_id) {
+        this.id_util_id = id_util_id;
     }
 
     @Override

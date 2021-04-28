@@ -23,17 +23,18 @@ public class ReviewCRUD {
     
     public void addReview (Review rev) throws SQLException{
     try{
-        String requete = "INSERT INTO review (comment,rating)"
-                + "VALUES(?,?)" ;
+        String requete = "INSERT INTO review (comment,rating,id_util_id)"
+                + "VALUES(?,?,?)" ;
            PreparedStatement pst =
             new MyConnection().cn.prepareStatement(requete);
     pst.setString(1,rev.getComment());
     pst.setInt(2,rev.getRating());
+    pst.setInt(3, rev.getId_util_id());
 
   
     pst.executeUpdate();
     System.out.println("Review  ajoutée!");
-
+ 
 
 
 

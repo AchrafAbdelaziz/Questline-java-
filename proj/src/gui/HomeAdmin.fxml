@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="810.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.HomeAdminController">
+   <children>
+      <JFXButton id="but" fx:id="btnusers" layoutX="240.0" layoutY="206.0" onAction="#Gotoaddusers" prefHeight="75.0" prefWidth="288.0" stylesheets="@cssButton.css" text="Utilisateurs">
+         <font>
+            <Font name="System Bold Italic" size="35.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="but" fx:id="btnreviews" layoutX="240.0" layoutY="313.0" onAction="#Gotoaddreviews" prefHeight="75.0" prefWidth="288.0" stylesheets="@cssButton.css" text="Reviews">
+         <font>
+            <Font name="System Bold Italic" size="35.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="236.0" layoutY="39.0" prefHeight="68.0" prefWidth="296.0" text="Espace Admin">
+         <font>
+            <Font size="45.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#ff3333" />
+                  <Stop color="#5f579e" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>

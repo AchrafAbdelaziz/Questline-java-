@@ -5,9 +5,11 @@
  */
 package gui;
 
+import entities.CurrentUser;
 import sservice.ReviewCRUD;
 import java.net.URL;
 import entities.Review;
+import entities.Utilisateur;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -27,8 +29,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.Rating;
+import sservice.UtilisateurCRUD;
 import tools.MyConnection;
+
+
+
 /**
  * FXML Controller class
  *
@@ -59,6 +67,10 @@ public class AddreviewController implements Initializable {
     private Button btnsupp;
     @FXML
     private TableView<Review> reviewtab;
+    @FXML
+    private Rating stars;
+    UtilisateurCRUD us = new UtilisateurCRUD();
+    Utilisateur u = new Utilisateur();
 
     /**
      * Initializes the controller class.
@@ -73,10 +85,15 @@ public class AddreviewController implements Initializable {
     @FXML
     private void AjouterReview() {
      try {
+         u = us.FindUserByID(Integer.parseInt(Session.connectedUser.getEmail()));
+         //System.out.println("current usr id  = "+CurrentUser.id);
+         System.out.println("u.getid"+u.getId());
+         System.out.println("u.getemail"+u.getEmail());
             //save Msg in DATA BASE
+            int rid = u.getId();
             String rcom  = commentrev.getText();
-            int rrat = Integer.parseInt(ratingrev.getText());
-            Review rev = new Review(rcom, rrat);
+            int rrat = (int) stars.getRating();
+            Review rev = new Review(rcom, rrat,rid);
             ReviewCRUD revv = new ReviewCRUD();
             revv.addReview(rev);
             // Alert 
@@ -90,9 +107,8 @@ public class AddreviewController implements Initializable {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        //showSujet();
-        //showSujet();
-        //AfficherReview();
+        
+        AfficherReview();
 
     }
     
@@ -102,8 +118,6 @@ public class AddreviewController implements Initializable {
         try{
       System.out.println("DEBUGG!!!!");
         ObservableList<Review> lisst = pcr.getReview();
-        //   System.out.println(pcr.getSujet().toString());
-        //ObservableList<Product> list = FXCollections.observableList(pcd.getProductList());
         idReviewtab.setCellValueFactory(new PropertyValueFactory<Review,Integer>("id_review"));
         commentReviewtab.setCellValueFactory(new PropertyValueFactory<Review,String>("comment"));
         ratingReviewtab.setCellValueFactory(new PropertyValueFactory<Review,Integer>("rating"));
@@ -121,8 +135,7 @@ private void SetValue(MouseEvent event) {
         selected = reviewtab.getSelectionModel().getSelectedItem();
         if (selected != null) {
 
-            //  String idsujettab = String.valueOf(selected.getId_suj());
-            // tfprixP.setText(Sprix);
+        
             ratingrev.setText(String.valueOf(selected.getRating()));
             commentrev.setText(selected.getComment());
             
@@ -186,6 +199,27 @@ private void SetValue(MouseEvent event) {
         }
         AfficherReview();
     }
+//private boolean testComment() {
+//     
+//        int nbNonChar = 0;
+//        for (int i = 1; i < commentrev.getText().trim().length(); i++) {
+//            char ch = commentrev.getText().charAt(i);
+//            if (!Character.isLetter(ch)) {
+//                nbNonChar++;
+//            }
+//        }
+//
+//        if (nbNonChar == 0 && nomuser.getText().trim().length() >= 3) {
+//          nomcheck.setImage(new Image("Image/checkmark.png"));
+//            return true;
+//        } else {
+//           nomcheck.setImage(new Image("Image/alertemark.png"));
+//               
+//            return false;
+//
+//        }
+//        
+//    }
     }
     
 

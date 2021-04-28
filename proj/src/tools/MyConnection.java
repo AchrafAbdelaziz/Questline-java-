@@ -20,6 +20,7 @@ public class MyConnection {
     public String login="root";
     public String pwd="";
     public Connection cn;
+    private static MyConnection insatance = null;
 
     public MyConnection() {
         try {
@@ -32,5 +33,16 @@ public class MyConnection {
         }
         
     }
-    
+    public Connection getConnection() {
+        return cn;
+    }
+    public static MyConnection getInsatance() {
+        if (insatance == null) {
+            insatance = new MyConnection();
+        }
+        return insatance;
+    }
+        public PreparedStatement prepareStatement(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

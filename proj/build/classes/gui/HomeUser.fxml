@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeUserController">
+   <children>
+      <JFXButton id="sale" fx:id="btnprofil" layoutX="66.0" layoutY="103.0" onAction="#Profil" stylesheets="@cssButton.css" text="Profil" />
+      <Label layoutX="149.0" layoutY="28.0" prefHeight="66.0" prefWidth="245.0" text="Espace Client">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <JFXButton id="sale" fx:id="btnajouterreview" layoutX="178.0" layoutY="103.0" onAction="#AjoutReview" stylesheets="@cssButton.css" text="Ajouter review" />
+   </children>
+</AnchorPane>
