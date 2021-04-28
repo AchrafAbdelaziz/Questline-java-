@@ -45,6 +45,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -110,8 +111,6 @@ public class HotelController implements Initializable {
     private ImageView nameCheck;
     @FXML
     private ImageView starsCheck;
-    @FXML
-    private ImageView adressCheck;
 
     /**
      * Initializes the controller class.
@@ -275,7 +274,10 @@ public class HotelController implements Initializable {
         Hotel h = new Hotel();
         //insert_stars
         h.setName(insert_name.getText());
-        h.setStars(Integer.parseInt(insert_stars.getText()));
+            try {
+                h.setStars(Integer.parseInt(insert_stars.getText()));
+            } catch (NumberFormatException numberFormatException) {
+            }
         h.setAdress(insert_adress.getText());
         h.setDescription(insert_description.getText());
         h.setPhoto(upload_text.getText());
@@ -360,42 +362,52 @@ public class HotelController implements Initializable {
             
         }
     }
-    private boolean testName() {
-        int nbNonChar = 0;
-        for (int i = 1; i < insert_name.getText().trim().length(); i++) {
-            char ch = insert_name.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
+    
+    
+    private Pattern patternName = Pattern.compile("[a-zA-Z0-9]+[ .]*[a-zA-Z0-9]+");
+    private Pattern patternStars = Pattern.compile("^[1-7]$");
+    
 
-        if (nbNonChar == 0 && insert_name.getText().trim().length() >= 2) {
-            nameCheck.setImage(new Image("Image/checkmark.png"));
-            return true;
-        } else {
+        public boolean testName() {
+  
+        if (patternName.matcher(insert_name.getText()).matches())
+        {
+           nameCheck.setImage(new Image("Image/checkmark.png")); 
+        }
+        else
+        {
             nameCheck.setImage(new Image("Image/alertemark.png"));
-            return false;
-
         }
+        
+        return patternName.matcher(insert_name.getText()).matches();
     }
     
+    public boolean testStars() {
+  
+        if (patternStars.matcher(insert_stars.getText()).matches())
+        {
+           starsCheck.setImage(new Image("Image/checkmark.png")); 
+        }
+        else
+        {
+            starsCheck.setImage(new Image("Image/alertemark.png"));
+        }
+        
+        return (patternStars.matcher(insert_stars.getText()).matches());
+    }
+
     private Boolean testSaisie() {
+        System.out.println(testStars());
         String erreur = "";
         if (!testName()) {
-            erreur = erreur + ("Veuillez verifier votre Nom: seulement des caractères et de nombre >= 3 \n");
+            erreur = erreur + ("Insert a valid Hotel name");
         }
-        /*if (!testPrenom()) {
-            erreur = erreur + ("Veuillez verifier votre Prenom: seulement des caractères et de nombre >= 3");
+        if (testStars()==false) {
+            erreur = erreur + ("Stars must be between 1 and 7");
         }
-        if (!testemail()) {
-            erreur = erreur + ("Veuillez verifier que votre adresse email est de la forme : ***@***.** \n");
-        }
-        if (!testPassword()) {
-            erreur = erreur + ("Veuillez verifier votre Mot de passe: seulement des caractères et de nombre >= 3");
-        }*/
         
 
-        if ( (!testName()) /*|| (!testPrenom()) || !testemail() || !testPassword() */ ) {
+        if ( (!testName()) || (!testStars()) ) {
            
            
            
@@ -404,10 +416,11 @@ public class HotelController implements Initializable {
         alert.setHeaderText("Vérifier les champs");
         alert.setContentText(erreur);
         alert.showAndWait();
+        return false;
        
         }
 
-        return  testName()  ;
+        return true;
     }
 
     @FXML
@@ -417,6 +430,7 @@ public class HotelController implements Initializable {
 
     @FXML
     private void starsCheck(KeyEvent event) {
+        testStars();
     }
 
     @FXML

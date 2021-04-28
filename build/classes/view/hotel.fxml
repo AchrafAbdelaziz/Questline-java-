@@ -30,16 +30,15 @@
       <TextField fx:id="upload_text" editable="false" layoutX="916.0" layoutY="504.0" prefHeight="25.0" prefWidth="190.0" />
       <ImageView fx:id="view_image_hotel" fitHeight="199.0" fitWidth="242.0" layoutX="566.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="adc1" layoutX="351.0" layoutY="656.0" mnemonicParsing="false" onAction="#roomz" text="rooms" />
-      <Button layoutX="790.0" layoutY="39.0" mnemonicParsing="false" onAction="#export" text="export pdf" />
+      <Button layoutX="790.0" layoutY="58.0" mnemonicParsing="false" onAction="#export" text="export pdf" />
       <JFXButton id="line" fx:id="add" layoutX="967.0" layoutY="596.0" onAction="#addHotel" prefWidth="140.0" stylesheets="@../css/cssButton.css" text="add" />
-      <JFXTextField fx:id="insert_name" layoutX="916.0" layoutY="126.0" onKeyPressed="#nameCheck" prefHeight="30.0" prefWidth="242.0" promptText="Insert hotel name" />
-      <JFXTextField fx:id="insert_stars" layoutX="916.0" layoutY="179.0" onKeyPressed="#starsCheck" promptText="stars" />
+      <JFXTextField fx:id="insert_name" layoutX="916.0" layoutY="126.0" onKeyReleased="#nameCheck" prefHeight="30.0" prefWidth="242.0" promptText="Insert hotel name" />
+      <JFXTextField fx:id="insert_stars" layoutX="916.0" layoutY="179.0" onKeyReleased="#starsCheck" promptText="stars" />
       <JFXTextField fx:id="insert_adress" layoutX="916.0" layoutY="241.0" onKeyPressed="#adressCheck" promptText="adresss" />
       <JFXTextArea fx:id="insert_description" layoutX="916.0" layoutY="301.0" prefHeight="139.0" prefWidth="272.0" promptText="description" />
       <JFXButton id="line" fx:id="upload" layoutX="1106.0" layoutY="504.0" onAction="#uploadfile" stylesheets="@../css/cssButton.css" text="Upload" />
       <ImageView fx:id="nameCheck" fitHeight="37.0" fitWidth="38.0" layoutX="1169.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="starsCheck" fitHeight="37.0" fitWidth="38.0" layoutX="1169.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="adressCheck" fitHeight="37.0" fitWidth="38.0" layoutX="1169.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" />
       <JFXTextField fx:id="search" layoutX="72.0" layoutY="54.0" promptText="Search Hotel" />
    </children>
 </AnchorPane>
