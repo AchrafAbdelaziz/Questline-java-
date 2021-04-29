@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="660.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pijava.FXMLDocumentController">
+    <children>
+        <Label fx:id="lbdest" layoutX="14.0" layoutY="63.0" minHeight="16" minWidth="69" text="Destination">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label fx:id="lbprix" layoutX="33.0" layoutY="115.0" text="Prix">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbperiode" layoutX="29.0" layoutY="173.0" text="Période">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfdest" layoutX="113.0" layoutY="63.0" prefHeight="26.0" prefWidth="164.0" />
+      <TextField fx:id="tfprix" layoutX="114.0" layoutY="115.0" prefHeight="26.0" prefWidth="164.0" />
+      <TextField fx:id="tfperiode" layoutX="114.0" layoutY="173.0" prefHeight="26.0" prefWidth="164.0" />
+      <TableView fx:id="tview" layoutX="317.0" layoutY="79.0" onMouseClicked="#getSelected" prefHeight="324.0" prefWidth="464.0">
+        <columns>
+          <TableColumn fx:id="colid" minWidth="0.0" prefWidth="0.0" text="Numéro" />
+            <TableColumn fx:id="coldestination" minWidth="0.0" prefWidth="132.0" text="Destination" />
+            <TableColumn fx:id="colprix" minWidth="0.0" prefWidth="109.0" text="Prix" />
+            <TableColumn fx:id="colperiode" minWidth="0.0" prefWidth="101.0" text="Période" />
+            <TableColumn fx:id="colimage" minWidth="0.0" prefWidth="122.0" text="Image" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnInsert" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#insertButton" prefHeight="30.0" prefWidth="87.0" text="Insert">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnDelete" layoutX="208.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="30.0" prefWidth="87.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnShow" layoutX="443.0" layoutY="419.0" mnemonicParsing="false" onAction="#showVoyages" prefHeight="30.0" prefWidth="106.0" text="Show">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label fx:id="lbimage" layoutX="32.0" layoutY="228.0" prefHeight="18.0" prefWidth="52.0" text="Image">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfid" layoutX="112.0" layoutY="-24.0" prefHeight="0.0" prefWidth="164.0" />
+      <Label fx:id="lbid" layoutX="33.0" layoutY="-24.0" prefHeight="25.0" prefWidth="30.0" text="Id">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnUpdate" layoutX="113.0" layoutY="285.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="30.0" prefWidth="87.0" text="Update">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnTrier" layoutX="588.0" layoutY="419.0" mnemonicParsing="false" onAction="#trierVoyage" prefHeight="30.0" prefWidth="106.0" text="Trier" textFill="#030f2c">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tfsearch" layoutX="459.0" layoutY="25.0" onKeyPressed="#search" prefHeight="30.0" prefWidth="225.0" />
+      <Label fx:id="lbsearch" layoutX="384.0" layoutY="30.0" text="Search">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <PieChart layoutX="23.0" layoutY="364.0" prefHeight="208.0" prefWidth="341.0" />
+      <PieChart layoutX="8.0" layoutY="369.0" prefHeight="227.0" prefWidth="376.0" />
+      <PieChart fx:id="piechart" layoutX="7.0" layoutY="360.0" prefHeight="286.0" prefWidth="347.0" />
+      <Button fx:id="btnAnimate" layoutX="656.0" layoutY="503.0" mnemonicParsing="false" onAction="#Animation" prefHeight="30.0" prefWidth="94.0" text="Animate" />
+      <TextField fx:id="tfimage" layoutX="115.0" layoutY="228.0" prefHeight="25.0" prefWidth="164.0" />
+    </children>
+</AnchorPane>
