@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="440.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pijava.VoyageClController">
+   <children>
+      <Rating fx:id="rating" layoutX="39.0" layoutY="213.0" />
+      <Label fx:id="msg" layoutX="57.0" layoutY="267.0" prefHeight="46.0" prefWidth="141.0" text="Label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tview" layoutX="257.0" layoutY="34.0" prefHeight="287.0" prefWidth="420.0">
+        <columns>
+          <TableColumn fx:id="coldestination" prefWidth="124.0" text="Destination" />
+          <TableColumn fx:id="colprix" prefWidth="84.0" text="Prix" />
+            <TableColumn fx:id="colperiode" prefWidth="105.0" text="Période" />
+            <TableColumn fx:id="colimage" prefWidth="106.0" text="Image" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnshow" layoutX="438.0" layoutY="354.0" mnemonicParsing="false" onAction="#showVoyages" prefHeight="39.0" prefWidth="102.0" text="Show" />
+   </children>
+</AnchorPane>
