@@ -1,0 +1,50 @@
+#bg{
+    -fx-background-color: #34343b;
+}
+
+#navbar{
+    -fx-background-color: #313036;
+}
+#navbtn{
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+-fx-border-width: 1 2 1 10; -fx-border-color: transparent transparent #919294 transparent;
+    -fx-text-background-color: white;
+    -fx-padding: 5 10 2 10px;
+}
+.table-row-cell{
+    -fx-background-color: #34343b;
+}
+.table-row-cell:empty{
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+.table-view .column-header{
+    -fx-text-background-color: white;
+    -fx-background-color: #34343b;
+    /*-fx-background-radius: 7px 7px 0px 0px;*/
+    -fx-background-insets: 0 2 0 2;
+    -fx-margin: 200px 200px 200px 200px;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+
+/*#table-row-cell: odd{
+    -fx-background-color: blue;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: even{
+    -fx-background-color: blue;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}*/
