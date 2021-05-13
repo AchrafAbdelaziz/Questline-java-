@@ -14,6 +14,8 @@ import com.codename1.io.JSONParser;
 
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.DateFormatPatterns;
+import com.codename1.l10n.ParseException;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.properties.UiBinding.DateConverter;
 
@@ -105,8 +107,23 @@ public class ServiceReservationH {
                         
                         rH.setId((int)id);
                         rH.setEmail(email);
-                        rH.setDebut(java.util.Date(debut));
-                        rH.setFin(java.util.Date(fin));
+                        
+                        
+                        //String input = debut;
+                        SimpleDateFormat format = new 
+                        SimpleDateFormat(DateFormatPatterns.ISO8601);
+                        Date datedeb = format.parse(debut);     
+                        Date datefin = format.parse(fin);     
+                      
+                        rH.setDebut(datedeb);
+                        rH.setFin(datefin);
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         rH.setRoom_id_id((int)room);
                         rH.setUser_id_id((int)user);
                         rH.setConfirmation(confirmation);
@@ -173,10 +190,16 @@ public class ServiceReservationH {
                 String fin = obj.get("fin").toString();                
 
                 
-                ReservationH.setDebut(java.sql.Date.valueOf(debut));
+               /* ReservationH.setDebut(java.sql.Date.valueOf(debut));
                   
-                ReservationH.setFin(java.sql.Date.valueOf(debut));
-                
+                ReservationH.setFin(java.sql.Date.valueOf(debut));*/
+               
+                        SimpleDateFormat format = new 
+                        SimpleDateFormat(DateFormatPatterns.ISO8601);
+                        Date datedeb = format.parse(debut);     
+                        Date datefin = format.parse(fin);   
+                ReservationH.setDebut(datedeb);
+                ReservationH.setFin(datefin);
                 
                 float user = Float.parseFloat(obj.get("user_id_id").toString());
                         
@@ -196,6 +219,8 @@ public class ServiceReservationH {
                 
             }catch(IOException ex){
                 System.out.println("error related to sql"+ex.getMessage());
+            } catch (ParseException ex) {
+                
             }
             
             System.out.println("data === "+str);
