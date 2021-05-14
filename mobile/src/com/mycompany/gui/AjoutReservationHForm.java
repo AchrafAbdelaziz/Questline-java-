@@ -231,6 +231,7 @@ public class AjoutReservationHForm extends BaseForm {
                                 
                                 
                                 //el affiche hotel 
+                                new ListHotelsForm(res).show();
                                 
                                 refreshTheme();
                     }
