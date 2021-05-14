@@ -22,34 +22,30 @@ public class ReservationH {
     private Date debut;
     private Date fin;
     private String confirmation;
-    private String email;
-    private String type;
 
     public ReservationH() {
     }
 
-    public ReservationH(Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation, String email, String type) {
+    public ReservationH(Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
         this.user_id_id = user_id_id;
         this.room_id_id = room_id_id;
         this.debut = debut;
         this.fin = fin;
         this.confirmation = confirmation;
-        this.email = email;
-        this.type = type;
+
     }
 
     
     
     
-    public ReservationH(Integer id, Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation, String email, String type) {
+    public ReservationH(Integer id, Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
         this.id = id;
         this.user_id_id = user_id_id;
         this.room_id_id = room_id_id;
         this.debut = debut;
         this.fin = fin;
         this.confirmation = confirmation;
-        this.email = email;
-        this.type = type;
+
     }
 
     public Integer getId() {
@@ -100,22 +96,7 @@ public class ReservationH {
         this.confirmation = confirmation;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
+ 
     
     
 }

@@ -13,6 +13,7 @@ import com.codename1.ui.Toolbar;
 import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
+import com.mycompany.gui.AjoutReservationHForm;
 import com.mycompany.gui.SignInForm;
 
 /**
@@ -52,7 +53,8 @@ public class MyApplication {
             current.show();
             return;
         }
-        new SignInForm(theme).show();
+        //new SignInForm(theme).show();
+        new AjoutReservationHForm(theme).show();
     }
 
     public void stop() {

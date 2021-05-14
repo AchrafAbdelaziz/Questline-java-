@@ -98,15 +98,12 @@ public class ServiceReservationH {
                         float room = Float.parseFloat(obj.get("room_id_id").toString());
                         
                         String confirmation = obj.get("confirmation").toString();
-                        
-                        String email = obj.get("email").toString();
-                        
-                        String type = obj.get("type").toString();
+
                         String debut = obj.get("debut").toString();
                         String fin = obj.get("fin").toString();
                         
                         rH.setId((int)id);
-                        rH.setEmail(email);
+
                         
                         
                         //String input = debut;
@@ -184,7 +181,7 @@ public class ServiceReservationH {
             try{
                 Map<String,Object>obj = jsonp.parseJSON(new CharArrayReader(new String(str).toCharArray()));
                 
-                ReservationH.setEmail(obj.get("email").toString());
+
                 
                 String debut = obj.get("debut").toString();
                 String fin = obj.get("fin").toString();                
