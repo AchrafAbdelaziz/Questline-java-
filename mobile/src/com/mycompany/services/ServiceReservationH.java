@@ -91,9 +91,11 @@ public class ServiceReservationH {
                     
                     for(Map<String, Object> obj : listOfMaps){
                         ReservationH rH = new ReservationH();
+                        
                         float id = Float.parseFloat(obj.get("id").toString());
                         
                         float user = Float.parseFloat(obj.get("user_id_id").toString());
+                        System.out.println(id);
                         
                         float room = Float.parseFloat(obj.get("room_id_id").toString());
                         
@@ -103,7 +105,8 @@ public class ServiceReservationH {
                         String fin = obj.get("fin").toString();
                         
                         rH.setId((int)id);
-
+                        
+                        System.out.println(rH);
                         
                         
                         //String input = debut;

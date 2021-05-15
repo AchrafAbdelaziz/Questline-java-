@@ -18,15 +18,18 @@ import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
 import com.codename1.ui.Tabs;
+import com.codename1.ui.TextArea;
 
 import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
@@ -36,6 +39,7 @@ import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.mycompany.entities.ReservationH;
 import com.mycompany.services.ServiceReservationH;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -146,6 +150,33 @@ public class ListHotelsForm extends BaseForm {
         });
 
         
+        ArrayList<ReservationH>list = ServiceReservationH.getInstance().AffichageReservationH();
+        
+        for(ReservationH rh : list){
+            System.out.println("bruhhhhhhhhhh");
+            
+            String urlImage = "back-logo.jpeg";
+            
+            Image placeHolder = Image.createImage(120,90);
+            EncodedImage enc = EncodedImage.createFromImage(placeHolder,false);
+            URLImage urlim =  URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
+            
+            
+            
+            
+            
+            
+            
+            ScaleImageLabel image = new  ScaleImageLabel(urlim);
+            Container   containerImg = new Container();
+            image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+            
+            
+            
+            addButton(urlim,rh.getUser_id_id(),rh.getRoom_id_id(),rh.getDebut(),rh.getFin(),rh.getConfirmation());
+           // addButton(urlim,3,2,rh.getDebut(),rh.getFin(),rh.getConfirmation());
+        }
+        
         
     }
     
@@ -197,6 +228,49 @@ public class ListHotelsForm extends BaseForm {
     private void updateArrowPosition(Button btn, Label l) {
         l.getUnselectedStyle().setMargin(LEFT,btn.getX() + btn.getWidth() / 2 - l.getWidth() / 2);
         l.getParent().repaint();
+    }
+
+    private void addButton(URLImage urlim,Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
+          
+        int height = Display.getInstance().convertToPixels(11.5f);
+        int width = Display.getInstance().convertToPixels(14f);
+          
+         /* Button image = new Button(img.fill(width, height));
+          image.setUIID("Label");
+          Container cnt = BorderLayout.west(image);*/
+                  
+                  
+      
+           
+        TextField ta1 = new TextField("user id");
+        ta1.setUIID("TextFieldBlack");
+        ta1.setEditable(false);
+        
+        TextField ta2 = new TextField("room id");
+        ta2.setUIID("TextFieldBlack");
+        ta2.setEditable(false);
+        
+         TextField ta3 = new TextField("date debut");
+        ta3.setUIID("TextFieldBlack");
+        ta3.setEditable(false); 
+        
+         TextField ta4 = new TextField("date fin");
+        ta4.setUIID("TextFieldBlack");
+        ta4.setEditable(false);
+        
+         TextField ta5 = new TextField("confirmation ");
+        ta5.setUIID("TextFieldBlack");
+        ta5.setEditable(false); 
+          
+         /* TextArea ta =  new TextArea(confirmation);
+          ta.setUIID("NewsTopLine");
+          ta.setEditable(false);*/
+          
+          //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta5));
+          
+          //add(cnt);
+          
+           
     }
 
     

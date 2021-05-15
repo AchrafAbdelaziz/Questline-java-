@@ -14,6 +14,7 @@ import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
 import com.mycompany.gui.AjoutReservationHForm;
+import com.mycompany.gui.ListHotelsForm;
 import com.mycompany.gui.SignInForm;
 
 /**
@@ -54,7 +55,8 @@ public class MyApplication {
             return;
         }
         //new SignInForm(theme).show();
-        new AjoutReservationHForm(theme).show();
+        //new AjoutReservationHForm(theme).show();
+        new ListHotelsForm(theme).show();
     }
 
     public void stop() {
