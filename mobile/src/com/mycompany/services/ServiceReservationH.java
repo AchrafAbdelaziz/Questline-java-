@@ -21,13 +21,19 @@ import com.codename1.properties.UiBinding.DateConverter;
 
 
 import com.codename1.ui.events.ActionListener;
+import com.codename1.util.BigDecimal;
+import com.codename1.util.BigInteger;
 import com.mycompany.entities.ReservationH;
 import com.mycompany.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 import static javafx.application.Application.launch;
        
 
@@ -86,27 +92,58 @@ public class ServiceReservationH {
             
             try {
                     Map<String,Object>mapReservationH = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
-                    
+
                     List<Map<String,Object>>listOfMaps = (List<Map<String,Object>>) mapReservationH.get("root");
                     
                     for(Map<String, Object> obj : listOfMaps){
                         ReservationH rH = new ReservationH();
+                        //Integer num;
+                        //num = (int) obj.get("id").intValue();
                         
-                        Double id = (Double) obj.get("id");
+                       // BigDecimal bdOne = new BigDecimal((BigInteger) obj.get("id"), 0);
                         
-                        /*float user = (int)obj.get("user_id_id");
-                        System.out.println(id);
+                        //System.out.println(obj.get("userId"));
+                       // System.out.println(bdOne);
+                        //System.out.println(Math.round((Double)obj.get("userId")));
+                       //int id_reclamtion = Integer.parseInt(obj.get("id").toString());
                         
-                        float room = (int)obj.get("room_id_id");*/
+
+                        // int id_reclamtion = Integer.parseInt(obj.get("id").toString());
+                        
+                        
+                        //int user = (int) Math.round((Double)obj.get("userId"));
+                        
+                        /*String[] cutText;
+                        cutText = obj.get("userId").toString().split("2");
+                        System.out.println(obj.get("userId").toString());*/
+                       
+                         /*StringTokenizer st = new StringTokenizer(obj.get("userId").toString(),"{");
+                                System.out.println(st.nextToken("="));*/
+                                
+                               
+                        
+                        
+                         Map<String,Object> stringValues = ( Map<String,Object>)obj.get("userId");
+                        System.out.println(Math.round((Double)(stringValues.values().toArray()[0])));
+                       
+                        
+                        
+                       
+                       
+                        
+                        
+                        
+                       // int room = (int) Math.round((Double)obj.get("room_id_id"));
+                        //float room = (int)obj.get("room_id_id");*/
                         
                         String confirmation = obj.get("confirmation").toString();
-
+                            //System.out.println(confirmation);
                         /*String debut = obj.get("debut").toString();
                         String fin = obj.get("fin").toString();*/
                         
                       //  rH.setId((int)id);
                         
-                        System.out.println(rH);
+                        //System.out.println(rH);
                         
                         
                         //String input = debut;
