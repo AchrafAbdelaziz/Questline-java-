@@ -92,25 +92,25 @@ public class ServiceReservationH {
                     for(Map<String, Object> obj : listOfMaps){
                         ReservationH rH = new ReservationH();
                         
-                        float id = Float.parseFloat(obj.get("id").toString());
+                        Double id = (Double) obj.get("id");
                         
-                        float user = Float.parseFloat(obj.get("user_id_id").toString());
+                        /*float user = (int)obj.get("user_id_id");
                         System.out.println(id);
                         
-                        float room = Float.parseFloat(obj.get("room_id_id").toString());
+                        float room = (int)obj.get("room_id_id");*/
                         
                         String confirmation = obj.get("confirmation").toString();
 
-                        String debut = obj.get("debut").toString();
-                        String fin = obj.get("fin").toString();
+                        /*String debut = obj.get("debut").toString();
+                        String fin = obj.get("fin").toString();*/
                         
-                        rH.setId((int)id);
+                      //  rH.setId((int)id);
                         
                         System.out.println(rH);
                         
                         
                         //String input = debut;
-                        SimpleDateFormat format = new 
+                       /* SimpleDateFormat format = new 
                         SimpleDateFormat(DateFormatPatterns.ISO8601);
                         Date datedeb = format.parse(debut);     
                         Date datefin = format.parse(fin);     
@@ -125,7 +125,7 @@ public class ServiceReservationH {
                         
                         
                         rH.setRoom_id_id((int)room);
-                        rH.setUser_id_id((int)user);
+                        rH.setUser_id_id((int)user);*/
                         rH.setConfirmation(confirmation);
                         
                          // h.setDebut(rs.getDate("debut"));
