@@ -124,9 +124,10 @@ public class ServiceReservationH {
                         
                         
                          Map<String,Object> stringValues = ( Map<String,Object>)obj.get("userId");
-                        System.out.println(Math.round((Double)(stringValues.values().toArray()[0])));
+                        //System.out.println(Math.round((Double)(stringValues.values().toArray()[0])));
                        
                         
+                        int user = (int) Math.round((Double)(stringValues.values().toArray()[0]));
                         
                        
                        
@@ -164,6 +165,7 @@ public class ServiceReservationH {
                         rH.setRoom_id_id((int)room);
                         rH.setUser_id_id((int)user);*/
                         rH.setConfirmation(confirmation);
+                        rH.setUser_id_id(user);
                         
                          // h.setDebut(rs.getDate("debut"));
                          // h.setDebut(java.sql.Date.valueOf(debut.getValue()));

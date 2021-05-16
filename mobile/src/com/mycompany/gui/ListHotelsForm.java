@@ -163,7 +163,7 @@ public class ListHotelsForm extends BaseForm {
             
             
             
-            addButton(urlim,rh.getConfirmation());
+            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id());
             
             
             
@@ -234,7 +234,7 @@ public class ListHotelsForm extends BaseForm {
     }
 //    private void addButton(URLImage urlim,Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
 
-    private void addButton(Image img,String confirmation) {
+    private void addButton(Image img,String confirmation, int user) {
        // Container cnt = new BorderLayout().west(null);
           
         int height = Display.getInstance().convertToPixels(11.5f);
@@ -242,15 +242,17 @@ public class ListHotelsForm extends BaseForm {
           
           Button image = new Button(img.fill(width, height));
           image.setUIID("Label");
-          Container cnt = BorderLayout.west(image);
+          //Container cnt = BorderLayout.west(image);
+          Container cnt = new Container(new BorderLayout());
+          
                   
                   
-      
-      /*     
-        TextField ta1 = new TextField("user id");
-        ta1.setUIID("TextFieldBlack");
-        ta1.setEditable(false);
-        
+        //System.out.println(user);
+          
+       /* TextField ta1 = new TextField(user);
+        ta1.setUIID("bruh");
+        ta1.setEditable(false);*/
+        /* 
         TextField ta2 = new TextField("room id");
         ta2.setUIID("TextFieldBlack");
         ta2.setEditable(false);
@@ -263,15 +265,24 @@ public class ListHotelsForm extends BaseForm {
         ta4.setUIID("TextFieldBlack");
         ta4.setEditable(false);
         */
-         TextField ta5 = new TextField(confirmation);
+        String ch;
+        ch = user+"";
+         TextField ta5 = new TextField("user id ="+ch);
         ta5.setUIID("TextFieldBlack");
         ta5.setEditable(false); 
+        
+        TextField ta1 = new TextField("conf = "+confirmation);
+        ta1.setUIID("TextFieldBlack");
+        ta1.setEditable(false);
           
          /* TextArea ta =  new TextArea(confirmation);
           ta.setUIID("NewsTopLine");
           ta.setEditable(false);*/
-          
-          cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta5));
+          //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta1,ta5));
+          cnt.add(BorderLayout.WEST, new Label("LAAAA"));
+          //cnt.add(BorderLayout.CENTER, new TextField(confirmation).);
+
+          //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta5));
           
           add(cnt);
           
