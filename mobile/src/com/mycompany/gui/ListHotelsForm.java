@@ -163,7 +163,7 @@ public class ListHotelsForm extends BaseForm {
             
             
             
-            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id());
+            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id(),rh.getRoom_id_id(),rh.getId(),rh.getDebut(),rh.getFin());
             
             
             
@@ -234,14 +234,14 @@ public class ListHotelsForm extends BaseForm {
     }
 //    private void addButton(URLImage urlim,Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
 
-    private void addButton(Image img,String confirmation, int user) {
+    private void addButton(URLImage img,String confirmation, Integer user, Integer room, Integer id, Date datedeb, Date datefin) {
        // Container cnt = new BorderLayout().west(null);
           
-        int height = Display.getInstance().convertToPixels(11.5f);
-        int width = Display.getInstance().convertToPixels(14f);
+      //  int height = Display.getInstance().convertToPixels(11.5f);
+       // int width = Display.getInstance().convertToPixels(14f);
           
-          Button image = new Button(img.fill(width, height));
-          image.setUIID("Label");
+         // Button image = new Button(img.fill(width, height));
+         // image.setUIID("Label");
           //Container cnt = BorderLayout.west(image);
           Container cnt = new Container(new BorderLayout());
           
@@ -265,21 +265,39 @@ public class ListHotelsForm extends BaseForm {
         ta4.setUIID("TextFieldBlack");
         ta4.setEditable(false);
         */
-        String ch;
-        ch = user+"";
-         TextField ta5 = new TextField("user id ="+ch);
+       
+       /*  TextField ta5 = new TextField("user id ="+ch);
         ta5.setUIID("TextFieldBlack");
-        ta5.setEditable(false); 
+        ta5.setEditable(false); */
         
-        TextField ta1 = new TextField("conf = "+confirmation);
+      /*  TextField ta1 = new TextField("conf = "+confirmation);
         ta1.setUIID("TextFieldBlack");
-        ta1.setEditable(false);
+        ta1.setEditable(false);*/
           
          /* TextArea ta =  new TextArea(confirmation);
           ta.setUIID("NewsTopLine");
           ta.setEditable(false);*/
           //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta1,ta5));
-          cnt.add(BorderLayout.WEST, new Label("LAAAA"));
+          
+           String userC;
+           userC = user+"";
+           
+           String idC;
+           idC = id+"";
+           
+           String roomC;
+           roomC = room+"";
+           
+           String debC;
+           debC = datedeb+"";
+           
+           String finC;
+           finC = datefin+"";
+          
+          //cnt.add(BorderLayout.WEST, new Label(idC));
+           cnt.add(BorderLayout.NORTH, new Label(idC+" "+userC+" "+roomC,"TextFieldRed"));
+          cnt.add(BorderLayout.CENTER, new Label(debC+" "+finC));
+          cnt.add(BorderLayout.SOUTH, new Label(confirmation));
           //cnt.add(BorderLayout.CENTER, new TextField(confirmation).);
 
           //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta5));

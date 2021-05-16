@@ -34,6 +34,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.TimeZone;
 import static javafx.application.Application.launch;
        
 
@@ -121,23 +122,54 @@ public class ServiceReservationH {
                                 System.out.println(st.nextToken("="));*/
                                 
                                
-                        
+                        //System.out.println(Math.round((Double)(stringValues.values().toArray()[0])));
                         
                          Map<String,Object> stringValues = ( Map<String,Object>)obj.get("userId");
-                        //System.out.println(Math.round((Double)(stringValues.values().toArray()[0])));
-                       
+                         Map<String,Object> stringValues2 = ( Map<String,Object>)obj.get("roomId");
+                         
+                        System.out.println(obj.get("debut").getClass().getSimpleName());
+                        
+                        
                         
                         int user = (int) Math.round((Double)(stringValues.values().toArray()[0]));
+                        int room = (int) Math.round((Double)(stringValues2.values().toArray()[0]));
+                        int id = (int) Math.round((Double)((obj.get("id"))));
+                        String debut = (String) obj.get("debut");
+                        String fin = (String) obj.get("fin");
+                        String confirmation = obj.get("confirmation").toString();
                         
-                       
-                       
+                        //System.out.println(debut.substring(0,10));
+
+                        
+                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+                        
+  
+                           Date datedeb = format.parse(debut.substring(0,10));
+                            Date datefin = format.parse(fin.substring(0,10));
+
+
+
+                        System.out.println(datedeb);
+                        
+                        rH.setUser_id_id(user);
+                        rH.setRoom_id_id(room);
+                        rH.setId(id);
+                        rH.setDebut(datedeb);
+                        rH.setFin(datefin);
+                        rH.setConfirmation(confirmation);
+                        
+                          
+                        
+                        
+                        
                         
                         
                         
                        // int room = (int) Math.round((Double)obj.get("room_id_id"));
                         //float room = (int)obj.get("room_id_id");*/
                         
-                        String confirmation = obj.get("confirmation").toString();
+                       // String confirmation = obj.get("confirmation").toString();
                             //System.out.println(confirmation);
                         /*String debut = obj.get("debut").toString();
                         String fin = obj.get("fin").toString();*/
@@ -164,8 +196,8 @@ public class ServiceReservationH {
                         
                         rH.setRoom_id_id((int)room);
                         rH.setUser_id_id((int)user);*/
-                        rH.setConfirmation(confirmation);
-                        rH.setUser_id_id(user);
+                       // rH.setConfirmation(confirmation);
+                       // rH.setUser_id_id(user);
                         
                          // h.setDebut(rs.getDate("debut"));
                          // h.setDebut(java.sql.Date.valueOf(debut.getValue()));
