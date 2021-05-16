@@ -19,6 +19,7 @@ import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
@@ -158,6 +159,7 @@ public class ListHotelsForm extends BaseForm {
         ArrayList<ReservationH>list = ServiceReservationH.getInstance().AffichageReservationH();
         
         for(ReservationH rh : list){
+
             //System.out.println(rh.getUser_id_id().getClass().getSimpleName());
             
             String urlImage = "back-logo.jpeg";
@@ -168,7 +170,7 @@ public class ListHotelsForm extends BaseForm {
             
             
             
-            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id(),rh.getRoom_id_id(),rh.getId(),rh.getDebut(),rh.getFin());
+            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id(),rh.getRoom_id_id(),rh.getId(),rh.getDebut(),rh.getFin(),res);
             
             
             
@@ -239,7 +241,7 @@ public class ListHotelsForm extends BaseForm {
     }
 //    private void addButton(URLImage urlim,Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
 
-    private void addButton(URLImage img,String confirmation, Integer user, Integer room, Integer id, Date datedeb, Date datefin) {
+    private void addButton(URLImage img,String confirmation, Integer user, Integer room, Integer id, Date datedeb, Date datefin,Resources res) {
        // Container cnt = new BorderLayout().west(null);
           
       //  int height = Display.getInstance().convertToPixels(11.5f);
@@ -248,7 +250,7 @@ public class ListHotelsForm extends BaseForm {
          // Button image = new Button(img.fill(width, height));
          // image.setUIID("Label");
           //Container cnt = BorderLayout.west(image);
-          Container cnt = new Container(new BorderLayout());
+         
           
                   
                   
@@ -283,7 +285,7 @@ public class ListHotelsForm extends BaseForm {
           ta.setUIID("NewsTopLine");
           ta.setEditable(false);*/
           //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta1,ta5));
-          
+           Container cnt = new Container(new BorderLayout());
            String userC;
            userC = user+"";
            
@@ -307,6 +309,40 @@ public class ListHotelsForm extends BaseForm {
 
           //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta5));
           
+          //suprimer
+          Label lSupprimer = new Label(" ");
+          lSupprimer.setUIID("NewsTopLine");
+          Style supprimerStyle = new Style(lSupprimer.getUnselectedStyle());
+          supprimerStyle.setFgColor(0xf21f1f);
+          FontImage supprimerImage = FontImage.createMaterial(FontImage.MATERIAL_DELETE, supprimerStyle);
+          lSupprimer.setIcon(supprimerImage);
+          lSupprimer.setTextPosition(RIGHT);  
+          //el delete
+          
+          lSupprimer.addPointerPressedListener(l->{
+                  Dialog dig = new Dialog("DELETE BRO");
+          
+                  if (dig.show("DELETE "," you gonna delete ?"," NAH","BET")) {
+                      dig.dispose();
+                  }
+                  else {
+                      dig.dispose();
+                      ServiceReservationH.getInstance().deleteReservation(id);
+                      ListHotelsForm a = new ListHotelsForm(res);
+                         a.show();
+                      refreshTheme();
+                     
+                       //revalidate();
+                       //refreshTheme();
+                       
+                      
+                  }
+                  
+                  
+          });
+          
+          
+          cnt.add(BorderLayout.EAST,lSupprimer);
           add(cnt);
           
            

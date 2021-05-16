@@ -47,6 +47,8 @@ public class ServiceReservationH {
     
     public  static ServiceReservationH instance =null ;
     
+    public static boolean resultOk = true;
+    
     
     private ConnectionRequest req;
     
@@ -92,6 +94,8 @@ public class ServiceReservationH {
             jsonp = new JSONParser();
             
             try {
+                        
+                    
                     Map<String,Object>mapReservationH = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
 
                     List<Map<String,Object>>listOfMaps = (List<Map<String,Object>>) mapReservationH.get("root");
@@ -127,7 +131,7 @@ public class ServiceReservationH {
                          Map<String,Object> stringValues = ( Map<String,Object>)obj.get("userId");
                          Map<String,Object> stringValues2 = ( Map<String,Object>)obj.get("roomId");
                          
-                        System.out.println(obj.get("debut").getClass().getSimpleName());
+                      //  System.out.println(obj.get("debut").getClass().getSimpleName());
                         
                         
                         
@@ -150,7 +154,7 @@ public class ServiceReservationH {
 
 
 
-                        System.out.println(datedeb);
+                        //System.out.println(datedeb);
                         
                         rH.setUser_id_id(user);
                         rH.setRoom_id_id(room);
@@ -217,7 +221,7 @@ public class ServiceReservationH {
                         rH.setDebut(DateConverter);
                         rH.setFin(DateConverterfin);*/
                         
-                        
+                       // System.out.println(rH.getId());
                         result.add(rH);
                         
                     }
@@ -225,7 +229,8 @@ public class ServiceReservationH {
                     
                     
                      }catch(Exception ex){
-                         ex.printStackTrace();
+                         //ex.printStackTrace();
+                         //System.out.println("dirrr");
                      }
             
             
@@ -241,6 +246,22 @@ public class ServiceReservationH {
     
     }
     
+    
+    //delete reservation
+    
+    public boolean deleteReservation(int id){
+        String url = Statics.BASE_URL + "/deleteHotelJson?id="+id;
+        
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                req.removeResponseCodeListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req); 
+        return resultOk;
+    }
     
     
     //Detail reservation
@@ -294,7 +315,7 @@ public class ServiceReservationH {
                 
             }
             
-            System.out.println("data === "+str);
+           // System.out.println("data === "+str);
         
                 }));
     
