@@ -112,7 +112,7 @@ public class ListHotelsForm extends BaseForm {
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reservations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("HOTELS", barGroup);
         mesListes.setUIID("SelectBar");
         RadioButton liste = RadioButton.createToggle("Autres", barGroup);
         liste.setUIID("SelectBar");
@@ -122,11 +122,16 @@ public class ListHotelsForm extends BaseForm {
 
 
         mesListes.addActionListener((e) -> {
-               InfiniteProgress ip = new InfiniteProgress();
-        final Dialog ipDlg = ip.showInifiniteBlocking();
+               
+         ListHotelsForm a = new ListHotelsForm(res);
+           a.show();
+            refreshTheme();
+        });
         
-        //  ListReclamationForm a = new ListReclamationForm(res);
-          //  a.show();
+        partage.addActionListener((e) -> {
+               
+         AjoutReservationHForm a = new AjoutReservationHForm(res);
+           a.show();
             refreshTheme();
         });
 
@@ -135,11 +140,11 @@ public class ListHotelsForm extends BaseForm {
                 FlowLayout.encloseBottom(arrow)
         ));
 
-        partage.setSelected(true);
+        mesListes.setSelected(true);
         arrow.setVisible(false);
         addShowListener(e -> {
             arrow.setVisible(true);
-            updateArrowPosition(partage, arrow);
+            updateArrowPosition(mesListes, arrow);
         });
         bindButtonSelection(mesListes, arrow);
         bindButtonSelection(liste, arrow);

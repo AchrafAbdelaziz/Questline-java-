@@ -55,8 +55,8 @@ public class MyApplication {
             return;
         }
         //new SignInForm(theme).show();
-        //new AjoutReservationHForm(theme).show();
-        new ListHotelsForm(theme).show();
+        new AjoutReservationHForm(theme).show();
+        //new ListHotelsForm(theme).show();
     }
 
     public void stop() {

@@ -120,14 +120,23 @@ public class AjoutReservationHForm extends BaseForm {
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
 
-        mesListes.addActionListener((e) -> {
-               InfiniteProgress ip = new InfiniteProgress();
-        final Dialog ipDlg = ip.showInifiniteBlocking();
+      mesListes.addActionListener((e) -> {
+               
+        
+         ListHotelsForm a = new ListHotelsForm(res);
+           a.show();
+            refreshTheme();
+        });
+            
+            
+            
+             //  InfiniteProgress ip = new InfiniteProgress();
+        //final Dialog ipDlg = ip.showInifiniteBlocking();
         
         //  ListReclamationForm a = new ListReclamationForm(res);
           //  a.show();
-            refreshTheme();
-        });
+          //  refreshTheme();
+        
 
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(3, mesListes, liste, partage),
