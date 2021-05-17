@@ -232,7 +232,7 @@ public class AjoutReservationHForm extends BaseForm {
                                 String.valueOf(confirmation.getText()).toString()
 
                                 ); 
-                                System.out.println("data Reservation Hotel =="+resH);
+                                //System.out.println("data Reservation Hotel =="+resH);
                         
                                 ServiceReservationH.getInstance().ajouterReservationH(resH);
                                 

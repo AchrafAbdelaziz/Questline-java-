@@ -9,6 +9,7 @@ import com.codename1.components.InfiniteProgress;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
 import com.codename1.l10n.DateFormatPatterns;
+import com.codename1.l10n.ParseException;
 
 import com.codename1.l10n.SimpleDateFormat;
 
@@ -42,6 +43,7 @@ import com.mycompany.entities.ReservationH;
 import com.mycompany.services.ServiceReservationH;
 import java.util.ArrayList;
 import java.util.Date;
+
 
 /**
  *
@@ -170,7 +172,7 @@ public class ListHotelsForm extends BaseForm {
             
             
             
-            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id(),rh.getRoom_id_id(),rh.getId(),rh.getDebut(),rh.getFin(),res);
+            addButton(urlim,rh.getConfirmation(),rh.getUser_id_id(),rh.getRoom_id_id(),rh.getId(),rh.getDebut(),rh.getFin(),res,rh);
             
             
             
@@ -241,50 +243,8 @@ public class ListHotelsForm extends BaseForm {
     }
 //    private void addButton(URLImage urlim,Integer user_id_id, Integer room_id_id, Date debut, Date fin, String confirmation) {
 
-    private void addButton(URLImage img,String confirmation, Integer user, Integer room, Integer id, Date datedeb, Date datefin,Resources res) {
-       // Container cnt = new BorderLayout().west(null);
-          
-      //  int height = Display.getInstance().convertToPixels(11.5f);
-       // int width = Display.getInstance().convertToPixels(14f);
-          
-         // Button image = new Button(img.fill(width, height));
-         // image.setUIID("Label");
-          //Container cnt = BorderLayout.west(image);
-         
-          
-                  
-                  
-        //System.out.println(user);
-          
-       /* TextField ta1 = new TextField(user);
-        ta1.setUIID("bruh");
-        ta1.setEditable(false);*/
-        /* 
-        TextField ta2 = new TextField("room id");
-        ta2.setUIID("TextFieldBlack");
-        ta2.setEditable(false);
-        
-         TextField ta3 = new TextField("date debut");
-        ta3.setUIID("TextFieldBlack");
-        ta3.setEditable(false); 
-        
-         TextField ta4 = new TextField("date fin");
-        ta4.setUIID("TextFieldBlack");
-        ta4.setEditable(false);
-        */
-       
-       /*  TextField ta5 = new TextField("user id ="+ch);
-        ta5.setUIID("TextFieldBlack");
-        ta5.setEditable(false); */
-        
-      /*  TextField ta1 = new TextField("conf = "+confirmation);
-        ta1.setUIID("TextFieldBlack");
-        ta1.setEditable(false);*/
-          
-         /* TextArea ta =  new TextArea(confirmation);
-          ta.setUIID("NewsTopLine");
-          ta.setEditable(false);*/
-          //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta1,ta5));
+    private void addButton(URLImage img,String confirmation, Integer user, Integer room, Integer id, Date datedeb, Date datefin,Resources res, ReservationH rh) {
+
            Container cnt = new Container(new BorderLayout());
            String userC;
            userC = user+"";
@@ -309,7 +269,7 @@ public class ListHotelsForm extends BaseForm {
 
           //cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(ta5));
           
-          //suprimer
+          //suprimer ic
           Label lSupprimer = new Label(" ");
           lSupprimer.setUIID("NewsTopLine");
           Style supprimerStyle = new Style(lSupprimer.getUnselectedStyle());
@@ -317,6 +277,29 @@ public class ListHotelsForm extends BaseForm {
           FontImage supprimerImage = FontImage.createMaterial(FontImage.MATERIAL_DELETE, supprimerStyle);
           lSupprimer.setIcon(supprimerImage);
           lSupprimer.setTextPosition(RIGHT);  
+          
+           //update ic
+          Label lModifier = new Label(" ");
+          lModifier.setUIID("NewsTopLine");
+          Style modifierStyle = new Style(lModifier.getUnselectedStyle());
+          modifierStyle.setFgColor(0xf151f5);
+          
+          FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_UPDATE, modifierStyle);
+          lModifier.setIcon(mFontImage);
+          lModifier.setTextPosition(LEFT);  
+          
+          lModifier.addPointerPressedListener(l->{
+               try {
+                   //System.out.println("updaaate");
+                   new ModifierReservationHForm(res,rh).show();
+               } catch (ParseException ex) {
+                   System.out.println("modifier ma t3adetsh bro");
+               }
+          });
+          
+          
+          
+          
           //el delete
           
           lSupprimer.addPointerPressedListener(l->{
@@ -343,6 +326,9 @@ public class ListHotelsForm extends BaseForm {
           
           
           cnt.add(BorderLayout.EAST,lSupprimer);
+          cnt.add(BorderLayout.NORTH,lModifier);
+//          cnt.add(BorderLayout.CENTER_BEHAVIOR_TOTAL_BELOW,lModifier);
+          
           add(cnt);
           
            

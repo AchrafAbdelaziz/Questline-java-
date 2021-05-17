@@ -102,31 +102,7 @@ public class ServiceReservationH {
                     
                     for(Map<String, Object> obj : listOfMaps){
                         ReservationH rH = new ReservationH();
-                        //Integer num;
-                        //num = (int) obj.get("id").intValue();
-                        
-                       // BigDecimal bdOne = new BigDecimal((BigInteger) obj.get("id"), 0);
-                        
-                        //System.out.println(obj.get("userId"));
-                       // System.out.println(bdOne);
-                        //System.out.println(Math.round((Double)obj.get("userId")));
-                       //int id_reclamtion = Integer.parseInt(obj.get("id").toString());
-                        
 
-                        // int id_reclamtion = Integer.parseInt(obj.get("id").toString());
-                        
-                        
-                        //int user = (int) Math.round((Double)obj.get("userId"));
-                        
-                        /*String[] cutText;
-                        cutText = obj.get("userId").toString().split("2");
-                        System.out.println(obj.get("userId").toString());*/
-                       
-                         /*StringTokenizer st = new StringTokenizer(obj.get("userId").toString(),"{");
-                                System.out.println(st.nextToken("="));*/
-                                
-                               
-                        //System.out.println(Math.round((Double)(stringValues.values().toArray()[0])));
                         
                          Map<String,Object> stringValues = ( Map<String,Object>)obj.get("userId");
                          Map<String,Object> stringValues2 = ( Map<String,Object>)obj.get("roomId");
@@ -142,7 +118,7 @@ public class ServiceReservationH {
                         String fin = (String) obj.get("fin");
                         String confirmation = obj.get("confirmation").toString();
                         
-                        //System.out.println(debut.substring(0,10));
+
 
                         
                          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -154,7 +130,6 @@ public class ServiceReservationH {
 
 
 
-                        //System.out.println(datedeb);
                         
                         rH.setUser_id_id(user);
                         rH.setRoom_id_id(room);
@@ -163,65 +138,7 @@ public class ServiceReservationH {
                         rH.setFin(datefin);
                         rH.setConfirmation(confirmation);
                         
-                          
-                        
-                        
-                        
-                        
-                        
-                        
-                       // int room = (int) Math.round((Double)obj.get("room_id_id"));
-                        //float room = (int)obj.get("room_id_id");*/
-                        
-                       // String confirmation = obj.get("confirmation").toString();
-                            //System.out.println(confirmation);
-                        /*String debut = obj.get("debut").toString();
-                        String fin = obj.get("fin").toString();*/
-                        
-                      //  rH.setId((int)id);
-                        
-                        //System.out.println(rH);
-                        
-                        
-                        //String input = debut;
-                       /* SimpleDateFormat format = new 
-                        SimpleDateFormat(DateFormatPatterns.ISO8601);
-                        Date datedeb = format.parse(debut);     
-                        Date datefin = format.parse(fin);     
-                      
-                        rH.setDebut(datedeb);
-                        rH.setFin(datefin);
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        rH.setRoom_id_id((int)room);
-                        rH.setUser_id_id((int)user);*/
-                       // rH.setConfirmation(confirmation);
-                       // rH.setUser_id_id(user);
-                        
-                         // h.setDebut(rs.getDate("debut"));
-                         // h.setDebut(java.sql.Date.valueOf(debut.getValue()));
-
-                        
-                        
-                        //Date
-                        
-                      /*  String DateConverter = obj.get("debut").toString().substring(obj.get("debut").toString().indexOf("timestamp")+10,obj.get("obj").toString().lastIndexOf("}"));
-                        Date currentTime = new Date(Double.valueOf(DateConverter).longValue()* 1000);
-                        
-                         String DateConverterfin = obj.get("fin").toString().substring(obj.get("fin").toString().indexOf("timestamp")+10,obj.get("obj").toString().lastIndexOf("}"));
-                        Date currentTimefin = new Date(Double.valueOf(DateConverterfin).longValue()* 1000);
-                        //import if chak mtaa format simpledate
-                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                        String dateString = formatter.format(currentTime);
-                        rH.setDebut(DateConverter);
-                        rH.setFin(DateConverterfin);*/
-                        
-                       // System.out.println(rH.getId());
+             
                         result.add(rH);
                         
                     }
@@ -261,6 +178,25 @@ public class ServiceReservationH {
         });
         NetworkManager.getInstance().addToQueueAndWait(req); 
         return resultOk;
+    }
+    
+    //modifier reservation
+    
+    public boolean modifierReservationH(ReservationH reservation){
+        String url = Statics.BASE_URL+ "/updateHotelJson?id="+reservation.getId()+"&confirmation="+reservation.getConfirmation()+"&debut="+reservation.getDebut()+"&fin="+reservation.getFin();
+        req.setUrl(url);
+        
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+        
     }
     
     
